@@ -161,7 +161,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\WorkDay.cs" />
+    <Compile Include="Models\Worker.cs" />
+    <Compile Include="Models\WorkShift.cs" />
     <Compile Include="Models\WorkWeek.cs" />
     <Compile Include="Models\WorkYear.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
