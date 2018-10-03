@@ -16,5 +16,8 @@ namespace TeleTimeTest.Models
         
         public int WeekNumberID { get; set; }
         public virtual WorkWeek WorkWeek { get; set; }
+
+        public int? WorkShiftID { get; set; }
+        public virtual WorkShift WorkShift { get; set; }
     }
 }

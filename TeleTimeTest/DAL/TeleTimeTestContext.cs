@@ -25,6 +25,15 @@ namespace TeleTimeTest.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //modelBuilder.Entity<WorkShift>()
+            //    .HasMany<Shift>(s => s.Shifts)
+            //    .WithMany(c => c.WorkShifts)
+            //    .Map(cs =>
+            //            {
+            //                cs.MapLeftKey("WorkShiftRefId");
+            //                cs.MapRightKey("ShiftRefId");
+            //                cs.ToTable("WorkShiftShift");
+            //            });
         }
     }
 }

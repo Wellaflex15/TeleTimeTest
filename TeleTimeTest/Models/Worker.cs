@@ -16,6 +16,8 @@ namespace TeleTimeTest.Models
         public string EMail { get; set; }
         public TypeOfRole? TypeOfRole { get; set; }
 
-        ICollection<Shift> Shifts { get; set; }
+        public int ShiftID { get; set; }
+        public virtual Shift Shift { get; set; }
+        // ICollection<Shift> Shifts { get; set; }
     }
 }

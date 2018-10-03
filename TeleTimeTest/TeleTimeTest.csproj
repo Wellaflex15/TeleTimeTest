@@ -154,6 +154,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WorkerController.cs" />
     <Compile Include="Controllers\WorkWeekController.cs" />
     <Compile Include="Controllers\WorkYearController.cs" />
     <Compile Include="DAL\TeleTimeTestContext.cs" />
@@ -220,6 +221,11 @@
     <Content Include="Views\WorkWeek\Details.cshtml" />
     <Content Include="Views\WorkWeek\Edit.cshtml" />
     <Content Include="Views\WorkWeek\Index.cshtml" />
+    <Content Include="Views\Worker\Create.cshtml" />
+    <Content Include="Views\Worker\Delete.cshtml" />
+    <Content Include="Views\Worker\Details.cshtml" />
+    <Content Include="Views\Worker\Edit.cshtml" />
+    <Content Include="Views\Worker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,11 +9,17 @@ namespace TeleTimeTest.Models
     {
         Front, Back, CallBack
     }
+
     public class Shift
     {
+        public Shift()
+        {
+            this.WorkShifts = new HashSet<WorkShift>();
+        }
+
         public int ShiftID { get; set; }
-        public DateTime ShiftStart { get; set; }
-        public DateTime ShiftEnd { get; set; }
+        public int ShiftStart { get; set; }
+        public int ShiftEnd { get; set; }
         public int NumberOfWorkers { get; set; }
         public TypeOfShift? TypeOfShift { get; set; }
 
