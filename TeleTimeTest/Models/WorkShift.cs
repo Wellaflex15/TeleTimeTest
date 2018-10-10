@@ -11,12 +11,16 @@ namespace TeleTimeTest.Models
         [Key]
         public int WorkShiftID { get; set; } // Can use unique name instead of number
 
-        public List<WorkShiftName> WorkShiftNames { get; set; }
+        public string WorkShiftNameName { get; set; }
+        public WorkShiftName WorkShiftName { get; set; }
 
-        public List<Person> Persons { get; set; }
+        public string Name { get; set; }
+        public Person Person { get; set; }
 
-        public List<Time> Times { get; set; }
+        public string StartEndTime { get; set; }
+        public Time Times { get; set; }
 
-        public List<TypeOfShift> TypeOfShifts { get; set; }
+        public string ShiftName { get; set; }
+        public TypeOfShift TypeOfShift { get; set; }
     }
 }

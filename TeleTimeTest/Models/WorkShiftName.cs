@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,10 +8,9 @@ namespace TeleTimeTest.Models
 {
     public class WorkShiftName
     {
-        public int WorkShiftNameID { get; set; }
-        public string Name { get; set; }
+        [Key]
+        public string WorkShiftNameName { get; set; }
 
-        public int WorkShiftID { get; set; }
-        public WorkShift WorkShift { get; set; }
+        public List<WorkShift> WorkShifts { get; set; }
     }
 }

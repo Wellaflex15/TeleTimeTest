@@ -12,99 +12,88 @@
 </p>
 <table class="table">
     <tr>
-        @*<th>
-            WorkShiftName
+        <th>
+            @Html.DisplayNameFor(model => model.WorkShiftNameName)
         </th>
         <th>
-            Time
+            @Html.DisplayNameFor(model => model.StartEndTime)
         </th>
         <th>
-            TypeOfShift
+            @Html.DisplayNameFor(model => model.ShiftName)
         </th>
         <th>
-            PersonName
-        </th>*@
-        <th>
-                @Html.DisplayNameFor(model => model.WorkShiftID)
-            </th>
-            
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
     </tr>
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkShiftID)
-        </td>
-        
-    </tr>
+        if (item.WorkShiftNameName == "Standard")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkShiftNameName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartEndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShiftName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
     }
-    @*<tr>*@
-        @*@foreach (var workShift in Model.WorkShifts)
-        {*@
-            @*@foreach (var item in Model.WorkShiftNames)
-            {
-                if (item.ID == 1)
-                {
-                    <td>
-                        @item.Name
-                    </td>
-                }
-            }
-            @foreach (var item in Model.Times)
-            {
-                <td>
-                    @item.StartEndTime
-                </td>
-            }
-            @foreach (var item in Model.TypeOfShifts)
-            {
-                <td>
-                    @item.ShiftName
-                </td>
-            }
-            @foreach (var item in Model.Persons)
-            {
-                <td>
-                    @item.Name
-                </td>
-            }*@
-        @*}*@
-
-        @*<td></td>
-        <td>
-            @foreach (var workShiftName in Model.WorkShiftNames)
-            {
-
-                @workShiftName.Name
-            }
-        </td>
-        <td>
-            @foreach (var time in Model.Times)
-            {
-                @time.StartEndTime
-            }
-        </td>
-        <td>
-            @foreach (var typeOfShift in Model.TypeOfShifts)
-            {
-                @typeOfShift.ShiftName
-            }
-        </td>
-        <td>
-            @foreach (var persons in Model.Persons)
-            {
-                @persons.Name
-            }
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Persons)
-        </td>*@
-        @*<td>
+    @*<td>
             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
             @Html.ActionLink("Details", "Details", new { id = item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ID })
         </td>*@
-    @*</tr>*@
-    
+</table>
 
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkShiftNameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartEndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShiftName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.WorkShiftNameName == "Legend")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkShiftNameName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartEndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShiftName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    }
+    @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>*@
 </table>
