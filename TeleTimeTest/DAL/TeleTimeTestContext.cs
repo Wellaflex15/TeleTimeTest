@@ -15,12 +15,11 @@ namespace TeleTimeTest.DAL
 
         }
 
-        public DbSet<WorkYear> WorkYears { get; set; }
-        public DbSet<WorkWeek> WorkWeeks { get; set; }
-        public DbSet<WorkDay> WorkDays { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Time> Times { get; set; }
+        public DbSet<TypeOfShift> TypeOfShifts { get; set; }
         public DbSet<WorkShift> WorkShifts { get; set; }
-        public DbSet<Shift> Shifts { get; set; }
-        public DbSet<Worker> Workers { get; set; }
+        public DbSet<WorkShiftName> WorkShiftNames { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

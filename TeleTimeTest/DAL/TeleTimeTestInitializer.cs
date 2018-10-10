@@ -7,98 +7,92 @@ using TeleTimeTest.Models;
 namespace TeleTimeTest.DAL
 {
     //public class TeleTimeTestInitializer : System.Data.Entity.DropCreateDatabaseAlways<TeleTimeTestContext>
-    public class TeleTimeTestInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<TeleTimeTestContext>
+    public class TeleTimeTestInitializer : System.Data.Entity.DropCreateDatabaseAlways<TeleTimeTestContext>
     {
         protected override void Seed(TeleTimeTestContext context)
         {
             // Creating dummy data to test out the database -> not sure if we will keep this. 
-            // WORKYEAR
-            var workYears = new List<WorkYear>
+
+            var workShift = new List<WorkShift>
             {
-                new WorkYear{ YearID=2018 }
+                new WorkShift{ WorkShiftID = 1 },
+                new WorkShift{ WorkShiftID = 2 }
+                
+                //new WorkShift{ WorkShiftNameID=1, TimeID=1, TypeOfShiftID=1, PersonID=1 },
+                //new WorkShift{ WorkShiftNameID=1, TimeID=1, TypeOfShiftID=2, PersonID=2 },
+                //new WorkShift{ WorkShiftNameID=1, TimeID=1, TypeOfShiftID=3, PersonID=3 },
+                //new WorkShift{ WorkShiftNameID=1, TimeID=2, TypeOfShiftID=1, PersonID=4 },
+                //new WorkShift{ WorkShiftNameID=1, TimeID=2, TypeOfShiftID=2, PersonID=5 },
+                //new WorkShift{ WorkShiftNameID=1, TimeID=2, TypeOfShiftID=3, PersonID=6 }
+                 
+                //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=2, TypeOfShiftID=3, PersonID=6, },
+                //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=2, TypeOfShiftID=2, PersonID=5, },
+                //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=2, TypeOfShiftID=1, PersonID=4, },
+                //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=1, TypeOfShiftID=3, PersonID=3, },
+                //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=1, TypeOfShiftID=2, PersonID=2, },
+                //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=1, TypeOfShiftID=1, PersonID=1, }
             };
 
-            workYears.ForEach(s => context.WorkYears.Add(s));
-            context.SaveChanges();
+            workShift.ForEach(s => context.WorkShifts.Add(s));
 
-            // WORKWEEK
-            var workWeeks = new List<WorkWeek>();
-            
-            for (int w = 0; w < 52; w++) {
-                WorkWeek workWeek = new WorkWeek { WeekNumberID = w + 1, YearID = 2018 };
-                workWeeks.Add(workWeek);
-            }
-            
-            workWeeks.ForEach(s => context.WorkWeeks.Add(s));
-            context.SaveChanges();
-
-            // WORKDAY
-            var date = new DateTime(2018, 1, 1);
-            var workDays = new List<WorkDay>();
-            var random = new Random();
-            var dayNumber = 0;
-
-            for (int w = 0; w < 52; w++)
+            // TIME
+            var times = new List<Time>
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    WorkDay day = new WorkDay() { DayID = dayNumber + 1, Date = date.AddDays(dayNumber), WeekNumberID = w + 1, WorkShiftID = random.Next(1, 3) };
-                    workDays.Add(day);
-                    dayNumber++;
-                }
-            }
+                new Time { StartEndTime = "08-12", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Time { StartEndTime = "08-12", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Time { StartEndTime = "08-12", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Time { StartEndTime = "12-17", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Time { StartEndTime = "12-17", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Time { StartEndTime = "12-17", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID }
+            };
 
-            workDays.ForEach(s => context.WorkDays.Add(s));
-            // context.SaveChanges();
+            times.ForEach(s => context.Times.Add(s));
 
-            // WORKSHIFT
-            //var workShifts = new List<WorkShift>
-            //{
-            //    new WorkShift { WorkShiftID = 1, ShiftName = "Regular", Shifts = new List<Shift>() },
-            //    new WorkShift { WorkShiftID = 2, ShiftName = "Invoice", Shifts = new List<Shift>() }
-            //};
+            // TYPEOFSHIFT
+            var typeOfShifts = new List<TypeOfShift>
+            {
+                new TypeOfShift { ShiftName = "Front", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new TypeOfShift { ShiftName = "Back", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new TypeOfShift { ShiftName = "CallBack", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new TypeOfShift { ShiftName = "Front", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new TypeOfShift { ShiftName = "Back", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new TypeOfShift { ShiftName = "CallBack", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID }
+            };
 
-            var workShift1 = new WorkShift { WorkShiftID = 1, ShiftName = "Regular", Shifts = new List<Shift>() };
-            var workShift2 = new WorkShift { WorkShiftID = 2, ShiftName = "Invoice", Shifts = new List<Shift>() };
+            typeOfShifts.ForEach(s => context.TypeOfShifts.Add(s));
 
-            // workShifts.ForEach(s => context.WorkShifts.Add(s));
-            // context.SaveChanges();
+            // PERSON
+            var persons = new List<Person>
+            {
+                new Person { Name = "David Welin", EMail = "david@mail.com", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Person { Name = "Pelle Anka", EMail = "pelle@mail.com", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Person { Name = "Kalle Kråka", EMail = "kalle@mail.com", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Person { Name = "Nisse Naprapat", EMail = "nisse@mail.com", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Person { Name = "Rille Rille", EMail = "rille@mail.com", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID },
+                new Person { Name = "Olle Olsson", EMail = "olle@mail.com", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID }
+            };
 
-            // SHIFTS
-            //var shifts = new List<Shift>
-            //{
-            //    new Shift { ShiftID = 1, ShiftStart = 8, ShiftEnd = 12, NumberOfWorkers = 3, TypeOfShift = TypeOfShift.Front },
-            //    new Shift { ShiftID = 2, ShiftStart = 12, ShiftEnd = 17, NumberOfWorkers = 3, TypeOfShift = TypeOfShift.Front },
-            //    new Shift { ShiftID = 3, ShiftStart = 8, ShiftEnd = 17, NumberOfWorkers = 3, TypeOfShift = TypeOfShift.Back }
-            //};
+            persons.ForEach(s => context.Persons.Add(s));
 
-            var shift1 = new Shift { ShiftID = 1, ShiftStart = 8, ShiftEnd = 12, NumberOfWorkers = 3, TypeOfShift = TypeOfShift.Front };
-            var shift2 = new Shift { ShiftID = 2, ShiftStart = 12, ShiftEnd = 17, NumberOfWorkers = 3, TypeOfShift = TypeOfShift.Front };
-            var shift3 = new Shift { ShiftID = 3, ShiftStart = 8, ShiftEnd = 17, NumberOfWorkers = 3, TypeOfShift = TypeOfShift.Back };
+            var workShiftNames = new List<WorkShiftName>
+            {
+                new WorkShiftName { Name = "Standard", WorkShiftID = context.WorkShifts.Find(1).WorkShiftID }
+            };
 
-            workShift1.Shifts.Add(shift1);
-            workShift1.Shifts.Add(shift2);
-            workShift1.Shifts.Add(shift3);
+            workShiftNames.ForEach(s => context.WorkShiftNames.Add(s));
 
-            workShift2.Shifts.Add(shift1);
-            workShift2.Shifts.Add(shift2);
-            workShift2.Shifts.Add(shift3);
-
-            context.WorkShifts.Add(workShift1);
-            context.WorkShifts.Add(workShift2);
-
-            context.SaveChanges();
+            
 
             // WORKER
-            var workers = new List<Worker>
-            {
-                new Worker { WorkerID = 1, Name = "David Welin", EMail = "david@gmail.com", TypeOfRole = TypeOfRole.Avtal, ShiftID = 1 },
-                new Worker { WorkerID = 2, Name = "Kalle Welin", EMail = "kalle@gmail.com", TypeOfRole = TypeOfRole.Avtal, ShiftID = 2 },
-                new Worker { WorkerID = 3, Name = "Olle Welin", EMail = "olle@gmail.com", TypeOfRole = TypeOfRole.Avtal, ShiftID = 3 }
-            };
+            //var workers = new List<Worker>
+            //{
+            //    new Worker { WorkerID = 1, Name = "David Welin", EMail = "david@gmail.com", TypeOfRole = TypeOfRole.Avtal, ShiftID = 1 },
+            //    new Worker { WorkerID = 2, Name = "Kalle Welin", EMail = "kalle@gmail.com", TypeOfRole = TypeOfRole.Avtal, ShiftID = 2 },
+            //    new Worker { WorkerID = 3, Name = "Olle Welin", EMail = "olle@gmail.com", TypeOfRole = TypeOfRole.Avtal, ShiftID = 3 }
+            //};
 
-            workers.ForEach(s => context.Workers.Add(s));
-            context.SaveChanges();
+            //workers.ForEach(s => context.Workers.Add(s));
+            //context.SaveChanges();
 
         }
     }

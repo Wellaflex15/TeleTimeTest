@@ -11,107 +11,114 @@ using TeleTimeTest.Models;
 
 namespace TeleTimeTest.Controllers
 {
-    public class WorkYearController : Controller
+    public class WorkShiftController : Controller
     {
         private TeleTimeTestContext db = new TeleTimeTestContext();
 
-        // GET: WorkYear
+        // GET: WorkShift
         public ActionResult Index()
         {
-            return View(db.WorkYears.ToList());
+            //var viewModel = new WorkShiftViewerModel();
+            //viewModel.WorkShifts = db.WorkShifts.ToList();
+            //viewModel.WorkShiftNames = db.WorkShiftNames.ToList();
+            //viewModel.Times = db.Times.ToList();
+            //viewModel.TypeOfShifts = db.TypeOfShifts.ToList();
+            //viewModel.Persons = db.Persons.ToList();
+            //return View(viewModel);
+            return View(db.WorkShifts.ToList());
         }
 
-        // GET: WorkYear/Details/5
+        // GET: WorkShift/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkYear workYear = db.WorkYears.Find(id);
-            if (workYear == null)
+            WorkShift workShift = db.WorkShifts.Find(id);
+            if (workShift == null)
             {
                 return HttpNotFound();
             }
-            return View(workYear);
+            return View(workShift);
         }
 
-        // GET: WorkYear/Create
+        // GET: WorkShift/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: WorkYear/Create
+        // POST: WorkShift/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Year")] WorkYear workYear)
+        public ActionResult Create([Bind(Include = "WorkShiftID,ShiftName")] WorkShift workShift)
         {
             if (ModelState.IsValid)
             {
-                db.WorkYears.Add(workYear);
+                db.WorkShifts.Add(workShift);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(workYear);
+            return View(workShift);
         }
 
-        // GET: WorkYear/Edit/5
+        // GET: WorkShift/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkYear workYear = db.WorkYears.Find(id);
-            if (workYear == null)
+            WorkShift workShift = db.WorkShifts.Find(id);
+            if (workShift == null)
             {
                 return HttpNotFound();
             }
-            return View(workYear);
+            return View(workShift);
         }
 
-        // POST: WorkYear/Edit/5
+        // POST: WorkShift/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Year")] WorkYear workYear)
+        public ActionResult Edit([Bind(Include = "WorkShiftID,ShiftName")] WorkShift workShift)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(workYear).State = EntityState.Modified;
+                db.Entry(workShift).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(workYear);
+            return View(workShift);
         }
 
-        // GET: WorkYear/Delete/5
+        // GET: WorkShift/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkYear workYear = db.WorkYears.Find(id);
-            if (workYear == null)
+            WorkShift workShift = db.WorkShifts.Find(id);
+            if (workShift == null)
             {
                 return HttpNotFound();
             }
-            return View(workYear);
+            return View(workShift);
         }
 
-        // POST: WorkYear/Delete/5
+        // POST: WorkShift/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            WorkYear workYear = db.WorkYears.Find(id);
-            db.WorkYears.Remove(workYear);
+            WorkShift workShift = db.WorkShifts.Find(id);
+            db.WorkShifts.Remove(workShift);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
