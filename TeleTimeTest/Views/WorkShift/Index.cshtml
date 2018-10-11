@@ -10,8 +10,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@{ DateTime toDay = DateTime.Now;
+    int toDayNumber = toDay.DayOfYear;
+
+}
+
+<h3>@toDay.ToString("yyyy-MM-dd")</h3>
 <table class="table">
-    <tr>
+    @*<tr>
         <th>
             @Html.DisplayNameFor(model => model.WorkShiftNameName)
         </th>
@@ -25,10 +32,10 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
 
-    </tr>
+    </tr>*@
     @foreach (var item in Model)
     {
-        if (item.WorkShiftNameName == "Standard")
+        if (item.Date == toDayNumber)
         {
             <tr>
                 <td>
@@ -55,25 +62,39 @@
 
 <br />
 
+<h3>@toDay.AddDays(1).ToString("yyyy-MM-dd")</h3>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkShiftNameName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartEndTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShiftName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
 
-    </tr>
     @foreach (var item in Model)
     {
-        if (item.WorkShiftNameName == "Legend")
+        if (item.Date == toDayNumber + 1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkShiftNameName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartEndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShiftName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<br />
+
+<h3>@toDay.AddDays(2).ToString("yyyy-MM-dd")</h3>
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        if (item.Date == toDayNumber + 1)
         {
             <tr>
                 <td>

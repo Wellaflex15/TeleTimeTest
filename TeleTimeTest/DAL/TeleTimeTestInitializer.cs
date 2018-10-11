@@ -47,6 +47,7 @@ namespace TeleTimeTest.DAL
 
             persons.ForEach(s => context.Persons.Add(s));
 
+            // WORKSHIFTNAME
             var workShiftNames = new List<WorkShiftName>
             {
                 new WorkShiftName { WorkShiftNameName = "Standard" },
@@ -55,69 +56,135 @@ namespace TeleTimeTest.DAL
 
             workShiftNames.ForEach(s => context.WorkShiftNames.Add(s));
 
+            //WORKDAY
+
+            DateTime date = DateTime.Now;
+
+            var workDays = new List<WorkDay>
+            {
+                new WorkDay { Date = date.DayOfYear },
+                new WorkDay { Date = date.DayOfYear+1 },
+                new WorkDay { Date = date.DayOfYear+2 }
+            };
+
+            workDays.ForEach(s => context.WorkDays.Add(s));
+
+            DateTime toDay = DateTime.Now;
+            int toDayNumber = toDay.DayOfYear;
+
             var workShift = new List<WorkShift>
             {
+                // Idag
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Standard").WorkShiftNameName,
                     StartEndTime = context.Times.Find("08-12").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Front").ShiftName,
-                    Name = context.Persons.Find("David Welin").Name },
+                    Name = context.Persons.Find("David Welin").Name,
+                    Date = context.WorkDays.Find(toDayNumber).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Standard").WorkShiftNameName,
                     StartEndTime = context.Times.Find("08-12").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Back").ShiftName,
-                    Name = context.Persons.Find("Pelle Anka").Name },
+                    Name = context.Persons.Find("Pelle Anka").Name, 
+                    Date = context.WorkDays.Find(toDayNumber).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Standard").WorkShiftNameName,
                     StartEndTime = context.Times.Find("08-12").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("CallBack").ShiftName,
-                    Name = context.Persons.Find("Kalle Kråka").Name },
+                    Name = context.Persons.Find("Kalle Kråka").Name,
+                    Date = context.WorkDays.Find(toDayNumber).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Standard").WorkShiftNameName,
                     StartEndTime = context.Times.Find("12-17").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Front").ShiftName,
-                    Name = context.Persons.Find("Nisse Naprapat").Name },
+                    Name = context.Persons.Find("Nisse Naprapat").Name,
+                    Date = context.WorkDays.Find(toDayNumber).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Standard").WorkShiftNameName,
                     StartEndTime = context.Times.Find("12-17").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Back").ShiftName,
-                    Name = context.Persons.Find("Rille Rille").Name },
+                    Name = context.Persons.Find("Rille Rille").Name,
+                    Date = context.WorkDays.Find(toDayNumber).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Standard").WorkShiftNameName,
                     StartEndTime = context.Times.Find("12-17").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("CallBack").ShiftName,
-                    Name = context.Persons.Find("Olle Olsson").Name },
-                // Legendad
+                    Name = context.Persons.Find("Olle Olsson").Name,
+                    Date = context.WorkDays.Find(toDayNumber).Date },
+                // Imorgon
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
                     StartEndTime = context.Times.Find("08-12").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Front").ShiftName,
-                    Name = context.Persons.Find("Olle Olsson").Name },
+                    Name = context.Persons.Find("Olle Olsson").Name,
+                    Date = context.WorkDays.Find(toDayNumber+1).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
                     StartEndTime = context.Times.Find("08-12").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Back").ShiftName,
-                    Name = context.Persons.Find("Nisse Naprapat").Name },
+                    Name = context.Persons.Find("Nisse Naprapat").Name,
+                    Date = context.WorkDays.Find(toDayNumber+1).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
                     StartEndTime = context.Times.Find("08-12").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("CallBack").ShiftName,
-                    Name = context.Persons.Find("Kalle Kråka").Name },
+                    Name = context.Persons.Find("Kalle Kråka").Name,
+                    Date = context.WorkDays.Find(toDayNumber+1).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
                     StartEndTime = context.Times.Find("12-17").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Front").ShiftName,
-                    Name = context.Persons.Find("Pelle Anka").Name },
+                    Name = context.Persons.Find("Pelle Anka").Name,
+                    Date = context.WorkDays.Find(toDayNumber+1).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
                     StartEndTime = context.Times.Find("12-17").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("Back").ShiftName,
-                    Name = context.Persons.Find("David Welin").Name },
+                    Name = context.Persons.Find("David Welin").Name,
+                    Date = context.WorkDays.Find(toDayNumber+1).Date },
                 new WorkShift{
                     WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
                     StartEndTime = context.Times.Find("12-17").StartEndTime,
                     ShiftName = context.TypeOfShifts.Find("CallBack").ShiftName,
-                    Name = context.Persons.Find("David Welin").Name },
+                    Name = context.Persons.Find("David Welin").Name,
+                    Date = context.WorkDays.Find(toDayNumber+1).Date },
+                // Övermorgon
+                new WorkShift{
+                    WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
+                    StartEndTime = context.Times.Find("08-12").StartEndTime,
+                    ShiftName = context.TypeOfShifts.Find("Front").ShiftName,
+                    Name = context.Persons.Find("Olle Olsson").Name,
+                    Date = context.WorkDays.Find(toDayNumber+2).Date },
+                new WorkShift{
+                    WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
+                    StartEndTime = context.Times.Find("08-12").StartEndTime,
+                    ShiftName = context.TypeOfShifts.Find("Back").ShiftName,
+                    Name = context.Persons.Find("Nisse Naprapat").Name,
+                    Date = context.WorkDays.Find(toDayNumber+2).Date },
+                new WorkShift{
+                    WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
+                    StartEndTime = context.Times.Find("08-12").StartEndTime,
+                    ShiftName = context.TypeOfShifts.Find("CallBack").ShiftName,
+                    Name = context.Persons.Find("Kalle Kråka").Name,
+                    Date = context.WorkDays.Find(toDayNumber+2).Date },
+                new WorkShift{
+                    WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
+                    StartEndTime = context.Times.Find("12-17").StartEndTime,
+                    ShiftName = context.TypeOfShifts.Find("Front").ShiftName,
+                    Name = context.Persons.Find("Pelle Anka").Name,
+                    Date = context.WorkDays.Find(toDayNumber+2).Date },
+                new WorkShift{
+                    WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
+                    StartEndTime = context.Times.Find("12-17").StartEndTime,
+                    ShiftName = context.TypeOfShifts.Find("Back").ShiftName,
+                    Name = context.Persons.Find("David Welin").Name,
+                    Date = context.WorkDays.Find(toDayNumber+2).Date },
+                new WorkShift{
+                    WorkShiftNameName = context.WorkShiftNames.Find("Legend").WorkShiftNameName,
+                    StartEndTime = context.Times.Find("12-17").StartEndTime,
+                    ShiftName = context.TypeOfShifts.Find("CallBack").ShiftName,
+                    Name = context.Persons.Find("David Welin").Name,
+                    Date = context.WorkDays.Find(toDayNumber+2).Date },
                  
                 //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=2, TypeOfShiftID=3, PersonID=6, },
                 //new WorkShift{ WorkShiftID=2, WorkShiftNameID=2, TimeID=2, TypeOfShiftID=2, PersonID=5, },

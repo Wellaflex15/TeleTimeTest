@@ -20,6 +20,7 @@ namespace TeleTimeTest.DAL
         public DbSet<TypeOfShift> TypeOfShifts { get; set; }
         public DbSet<WorkShift> WorkShifts { get; set; }
         public DbSet<WorkShiftName> WorkShiftNames { get; set; }
+        public DbSet<WorkDay> WorkDays { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

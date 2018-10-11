@@ -22,5 +22,8 @@ namespace TeleTimeTest.Models
 
         public string ShiftName { get; set; }
         public TypeOfShift TypeOfShift { get; set; }
+
+        public int Date { get; set; }
+        public WorkDay WorkDay { get; set; }
     }
 }
