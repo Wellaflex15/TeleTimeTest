@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TeleTimeTest.Models.Person>
+
+@{
+    ViewBag.Title = "Person";
+}
+
+<h2>Person</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.EMail)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Name }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Name }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Name })
+        </td>
+    </tr>
+    }
+     <tr>
+        
+     </tr>
+    
+
+</table>

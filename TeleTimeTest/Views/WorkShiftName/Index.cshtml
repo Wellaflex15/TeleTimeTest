@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TeleTimeTest.Models.WorkShiftName>
+
+@{
+    ViewBag.Title = "WorkShiftName";
+}
+
+<h2>WorkShiftName</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkShiftNameName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkShiftNameName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkShiftNameName }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkShiftNameName }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkShiftNameName })
+        </td>
+    </tr>
+}
+
+</table>

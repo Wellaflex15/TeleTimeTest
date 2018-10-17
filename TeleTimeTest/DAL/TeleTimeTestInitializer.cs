@@ -62,9 +62,11 @@ namespace TeleTimeTest.DAL
 
             var workDays = new List<WorkDay>
             {
-                new WorkDay { Date = date.DayOfYear },
-                new WorkDay { Date = date.DayOfYear+1 },
-                new WorkDay { Date = date.DayOfYear+2 }
+                new WorkDay { Date = date.DayOfYear, WorkShiftExist = true},
+                new WorkDay { Date = date.DayOfYear+1, WorkShiftExist = true },
+                new WorkDay { Date = date.DayOfYear+2, WorkShiftExist = true},
+                new WorkDay { Date = date.DayOfYear+3, WorkShiftExist = false },
+                new WorkDay { Date = date.DayOfYear+4, WorkShiftExist = false }
             };
 
             workDays.ForEach(s => context.WorkDays.Add(s));

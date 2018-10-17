@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TeleTimeTest.Models.TypeOfShift>
+
+@{
+    ViewBag.Title = "TypeOfShift";
+}
+
+<h2>TypeOfShift</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShiftName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShiftName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ShiftName }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ShiftName }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ShiftName })
+        </td>
+    </tr>
+}
+
+</table>

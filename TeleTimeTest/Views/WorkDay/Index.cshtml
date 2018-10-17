@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TeleTimeTest.Models.WorkDay>
+
+@{
+    ViewBag.Title = "WorkDay";
+}
+
+@{  DateTime date = new DateTime(2018, 01, 01); }
+
+<h2>WorkDay</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkShiftExist)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @date.AddDays(item.Date).ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkShiftExist)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Date }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Date }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Date })
+            </td>
+        </tr>
+    }
+
+</table>

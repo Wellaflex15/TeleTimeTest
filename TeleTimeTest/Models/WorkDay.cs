@@ -12,6 +12,7 @@ namespace TeleTimeTest.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Date { get; set; }
+        public bool WorkShiftExist { get; set; }
         
         public List<WorkShift> WorkShifts { get; set; }
 

@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<TeleTimeTest.Models.WorkShift>
-@*@model TeleTimeTest.Models.WorkShiftViewerModel*@
 
 @{
     ViewBag.Title = "Index";
@@ -10,111 +9,49 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.EMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Times.StartEndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfShift.ShiftName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkDay.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkShiftName.WorkShiftNameName)
+        </th>
+        <th></th>
+    </tr>
 
-@{ DateTime toDay = DateTime.Now;
-    int toDayNumber = toDay.DayOfYear;
-
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.EMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Times.StartEndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeOfShift.ShiftName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkDay.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkShiftName.WorkShiftNameName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkShiftID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkShiftID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkShiftID })
+        </td>
+    </tr>
 }
 
-<h3>@toDay.ToString("yyyy-MM-dd")</h3>
-<table class="table">
-    @*<tr>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkShiftNameName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartEndTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShiftName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-
-    </tr>*@
-    @foreach (var item in Model)
-    {
-        if (item.Date == toDayNumber)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkShiftNameName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartEndTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShiftName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
-        }
-    }
-    @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>*@
-</table>
-
-<br />
-
-<h3>@toDay.AddDays(1).ToString("yyyy-MM-dd")</h3>
-<table class="table">
-
-    @foreach (var item in Model)
-    {
-        if (item.Date == toDayNumber + 1)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkShiftNameName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartEndTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShiftName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
-        }
-    }
-</table>
-
-<br />
-
-<h3>@toDay.AddDays(2).ToString("yyyy-MM-dd")</h3>
-<table class="table">
-
-    @foreach (var item in Model)
-    {
-        if (item.Date == toDayNumber + 1)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkShiftNameName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartEndTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShiftName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
-        }
-    }
-    @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>*@
 </table>

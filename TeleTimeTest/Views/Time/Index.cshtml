@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TeleTimeTest.Models.Time>
+
+@{
+    ViewBag.Title = "Time";
+}
+
+<h2>Time</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartEndTime)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartEndTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StartEndTime }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StartEndTime }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StartEndTime })
+        </td>
+    </tr>
+}
+
+</table>

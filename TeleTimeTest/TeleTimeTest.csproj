@@ -154,7 +154,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\TimeController.cs" />
+    <Compile Include="Controllers\TypeOfShiftController.cs" />
+    <Compile Include="Controllers\WorkDayController.cs" />
     <Compile Include="Controllers\WorkShiftController.cs" />
+    <Compile Include="Controllers\WorkShiftNameController.cs" />
     <Compile Include="DAL\TeleTimeTestContext.cs" />
     <Compile Include="DAL\TeleTimeTestInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -166,7 +171,6 @@
     <Compile Include="Models\WorkDay.cs" />
     <Compile Include="Models\WorkShift.cs" />
     <Compile Include="Models\WorkShiftName.cs" />
-    <Compile Include="Models\WorkShiftViewerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +219,31 @@
     <Content Include="Views\WorkShift\Details.cshtml" />
     <Content Include="Views\WorkShift\Edit.cshtml" />
     <Content Include="Views\WorkShift\Index.cshtml" />
+    <Content Include="Views\WorkDay\Create.cshtml" />
+    <Content Include="Views\WorkDay\Delete.cshtml" />
+    <Content Include="Views\WorkDay\Details.cshtml" />
+    <Content Include="Views\WorkDay\Edit.cshtml" />
+    <Content Include="Views\WorkDay\Index.cshtml" />
+    <Content Include="Views\WorkShiftName\Create.cshtml" />
+    <Content Include="Views\WorkShiftName\Delete.cshtml" />
+    <Content Include="Views\WorkShiftName\Details.cshtml" />
+    <Content Include="Views\WorkShiftName\Edit.cshtml" />
+    <Content Include="Views\WorkShiftName\Index.cshtml" />
+    <Content Include="Views\People\Create.cshtml" />
+    <Content Include="Views\People\Delete.cshtml" />
+    <Content Include="Views\People\Details.cshtml" />
+    <Content Include="Views\People\Edit.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\Time\Create.cshtml" />
+    <Content Include="Views\Time\Delete.cshtml" />
+    <Content Include="Views\Time\Details.cshtml" />
+    <Content Include="Views\Time\Edit.cshtml" />
+    <Content Include="Views\Time\Index.cshtml" />
+    <Content Include="Views\TypeOfShift\Create.cshtml" />
+    <Content Include="Views\TypeOfShift\Delete.cshtml" />
+    <Content Include="Views\TypeOfShift\Details.cshtml" />
+    <Content Include="Views\TypeOfShift\Edit.cshtml" />
+    <Content Include="Views\TypeOfShift\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
