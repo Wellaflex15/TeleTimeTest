@@ -10,33 +10,21 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<table class="table">
+<div class="row">
     @foreach (var item in Model)
     {
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <td>
+        <div class="col-md-2">
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <th>
-            @Html.DisplayNameFor(model => model.EMail)
-        </th>
-        <td>
+
             @Html.DisplayFor(modelItem => item.EMail)
-        </td>
-        <td>
+
             @Html.ActionLink("Edit", "Edit", new { id = item.Name }) |
             @Html.ActionLink("Details", "Details", new { id = item.Name }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Name })
-        </td>
-    </tr>
+        </div>
     }
-     <tr>
-        
-     </tr>
-    
+</div>
 
-</table>
+@*<th>
+        @Html.DisplayNameFor(model => model.EMail)
+    </th>*@
